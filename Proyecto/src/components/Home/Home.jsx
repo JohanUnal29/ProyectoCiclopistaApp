@@ -3,12 +3,11 @@ import Header from '../subComponents/Header';
 
 import CategoryList from "../Categories/CategoryList.jsx"; 
 
-const Home = ({setCategorySelected}) => {
+const Home = ({navigation,route}) => {
   
     return (
           <>
-              <Header title='Categories' />
-              <CategoryList setCategorySelected={setCategorySelected}/>
+              <CategoryList navigation={navigation} route={route}/>
           </>
     )
   }

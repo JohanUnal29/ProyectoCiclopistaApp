@@ -106,7 +106,6 @@ const CategoryListContainer = ({navigation,route}) => {
 
   return (
     <>
-      <Header />
       <Search setKeyword={setKeyword} />
       <AddProduct
         valueTitle={newTitleProduct}
