@@ -1,16 +1,15 @@
 import { useState } from "react";
 import {
-  View,
- 
+  SafeAreaView ,StatusBar 
 } from "react-native";
 
 
 import { styles } from "./styles/styles.js";
 
-import Home from "./src/components/Home/Home.jsx"
-import CategoryListContainer from "./src/components/Categories/CategoryListContainer.jsx";
 import { useFonts } from "expo-font"
-import { Button } from "react-native";
+import { colors } from "./src/global/colors.jsx";
+
+import Navigator from "./src/navigation/Navigator.jsx";
 
 export default function App() {
 
@@ -23,16 +22,12 @@ export default function App() {
   if (!fontLoaded) return null
 
   return (
-    <View style={styles.container}>
-      <Button onPress={()=>setCategorySelected("")}>Volver Al inicio</Button>
-
-      {categorySelected ?
-        <CategoryListContainer category={categorySelected} />
-        :
-        <Home setCategorySelected={setCategorySelected} />
-      }
-
-    </View>
+    <>
+      <StatusBar
+        backgroundColor={colors.red}
+      />
+      <Navigator/>
+    </>
   );
 }
 

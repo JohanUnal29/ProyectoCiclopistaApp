@@ -15,8 +15,9 @@ import AddProduct from '../products/CRUD/AddProduct.jsx'
 import uuid from "react-native-uuid";
 
 
-const CategoryListContainer = ({ category }) => {
+const CategoryListContainer = ({navigation,route}) => {
 
+  const {category} = route.params
   const [keyword, setKeyword] = useState("")
   const [products, setProducts] = useState(allProducts)
 
@@ -114,7 +115,7 @@ const CategoryListContainer = ({ category }) => {
         onChangePrice={setNewPriceProducts}
         addProduct={handlerAddProduct}
       />
-      <ProductListContainer products={products} onModal={handlerModal} onModal2={handlerModal2} />
+      <ProductListContainer products={products} navigation={navigation} route={route} onModal={handlerModal} onModal2={handlerModal2} />
 
       <ModalDeleteProduct
         product={productSelected}
