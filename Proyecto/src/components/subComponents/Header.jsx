@@ -1,10 +1,22 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { useNavigation } from '@react-navigation/native';
 import { colors } from '../../global/colors'
 
-const Header = ({title = "Producto"}) => {
+const Header = ({ title = 'Producto', showBackButton = true }) => {
+
+  const navigation = useNavigation();
+
+  const handleGoBack = () => {
+    navigation.goBack();
+  };
 
   return (
     <View style={styles.container}>
+      {title !== "Categorias" && (
+        <TouchableOpacity onPress={handleGoBack} style={styles.backButton}>
+          <Text>Volver</Text>
+        </TouchableOpacity>
+      )}
       <Text style={styles.text}>{title}</Text>
     </View>
   )
@@ -20,8 +32,12 @@ const styles = StyleSheet.create({
         justifyContent:"center",
         alignItems:"center"
     },
-    text:{
-        fontSize:20,
-        fontFamily:"Josefin"
-    }
+    backButton: {
+      position: 'absolute',
+      left: 10,
+    },
+    text: {
+      fontSize: 20,
+      fontFamily: 'Josefin',
+    },
 })
